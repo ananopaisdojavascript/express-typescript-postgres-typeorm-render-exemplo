@@ -12,7 +12,7 @@ const myDataSource = new DataSource({
   username: DB_USERNAME,
   password: DB_PASSWORD,
   database: DB_NAME,
-  entities: [__dirname + '/../**/*.entity.{js,ts}'],
+  entities: ["build/entity/*.js"],
   logging: true,
   synchronize: true,
 })
