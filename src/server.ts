@@ -1,4 +1,15 @@
 import express, { Request, Response } from "express"
+import myDataSource from "./database/data-source"
+import User from "./entity/user.entity"
+
+myDataSource
+  .initialize()
+  .then(() => {
+    console.log("Data Source has been initialized!")
+  })
+  .catch((err) => {
+    console.error("Error during Data Source initialization:", err)
+  })
 
 const app = express()
 const port = 3000
