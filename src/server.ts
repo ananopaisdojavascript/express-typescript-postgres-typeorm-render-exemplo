@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express"
 import myDataSource from "./database/data-source"
-import User from "./entity/user.entity"
+import Users from "./entity/user.entity"
 
 myDataSource
   .initialize()
@@ -15,16 +15,19 @@ const app = express()
 const port = 3000
 app.use(express.json())
 
-app.get("/users", function (req: Request, res: Response) {
-  res.send('🤗🤗🤗🤗🤗')
+app.get("/users", async function (req: Request, res: Response) {
+  const users = await myDataSource.getRepository(Users).find()
+  res.json(users)
 })
 
 app.get("/users/:id", function (req: Request, res: Response) {
   // here we will have logic to return user by id
 })
 
-app.post("/users", function (req: Request, res: Response) {
-  // here we will have logic to save a user
+app.post("/users", async function (req: Request, res: Response) {
+  const user = myDataSource.getRepository(Users).create(req.body)
+  const results = await myDataSource.getRepository(Users).save(user)
+  return res.send(results)
 })
 
 app.put("/users/:id", function (req: Request, res: Response) {
