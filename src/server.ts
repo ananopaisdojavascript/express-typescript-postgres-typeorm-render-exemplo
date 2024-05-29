@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express"
 import myDataSource from "./database/data-source"
 import Users from "./entity/user.entity"
+import cors from "cors"
 
 myDataSource
   .initialize()
@@ -14,6 +15,7 @@ myDataSource
 const app = express()
 const port = 3000
 app.use(express.json())
+app.use(cors())
 
 app.get("/users", async function (req: Request, res: Response) {
   const users = await myDataSource.getRepository(Users).find()
@@ -41,3 +43,5 @@ app.delete("/users/:id", function (req: Request, res: Response) {
 app.listen(port, () => {
   console.log('Servidor funcionando!!!')
 })
+
+export default app;

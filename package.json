@@ -2,12 +2,13 @@
   "name": "express-typescript-postgres-typeorm-render-exemplo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "build": "tsc",
     "dev": "node ts-node ./build/server.js",
     "start": "tsc && nodemon ./src/server.ts",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "vercel-build": "echo hello"
   },
   "keywords": [],
   "author": "",
