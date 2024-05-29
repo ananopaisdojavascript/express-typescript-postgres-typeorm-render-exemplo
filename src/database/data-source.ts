@@ -1,5 +1,7 @@
+import 'reflect-metadata'
 import { DataSource } from "typeorm"
 import dotenv from "dotenv";
+import Users from '../entity/user.entity';
 
 dotenv.config();
 
@@ -12,7 +14,7 @@ const myDataSource = new DataSource({
   username: DB_USERNAME,
   password: DB_PASSWORD,
   database: DB_NAME,
-  entities: ["build/entity/*.js"],
+  entities: [Users],
   logging: true,
   synchronize: true,
 })
